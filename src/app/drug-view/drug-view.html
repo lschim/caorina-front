@@ -1,6 +1,11 @@
 <mat-card class="drug-card">
   <mat-card-header>
-    <mat-card-title>{{ drug.name }} ({{ drug.frenchName }})</mat-card-title>
+    <mat-card-title>
+      {{ drug.name }}
+      @if (drug.frenchName) {
+        ({{ drug.frenchName }})
+      }
+    </mat-card-title>
     <mat-card-subtitle>{{ drug.latinName }}</mat-card-subtitle>
   </mat-card-header>
 
@@ -17,7 +22,10 @@
     <p><strong>Dosage :</strong> {{ drug.dosage || '—' }}</p>
     <div class="stars-row">
       <strong>Étoiles :</strong>
-      <app-star-rating [value]="drug.numberOfStars ?? 0" (valueChange)="updateStars($event)"></app-star-rating>
+      <app-star-rating
+        [value]="drug.numberOfStars ?? 0"
+        (valueChange)="updateStars($event)"
+      ></app-star-rating>
     </div>
     @if (drug.additionalNotes) {
       <p><strong>Notes :</strong> {{ drug.additionalNotes }}</p>
