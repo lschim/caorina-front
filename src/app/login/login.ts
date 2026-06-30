@@ -1,4 +1,5 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, DestroyRef, inject, signal } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
@@ -16,6 +17,7 @@ export class LoginComponent {
   private authService = inject(AuthService);
   private router = inject(Router);
   private fb = inject(FormBuilder);
+  private destroyRef = inject(DestroyRef);
 
   form = this.fb.nonNullable.group({
     email: ['', [Validators.required, Validators.email]],
@@ -30,12 +32,15 @@ export class LoginComponent {
     this.loading.set(true);
     this.error.set(null);
     const { email, password } = this.form.getRawValue();
-    this.authService.login(email, password).subscribe({
-      next: () => this.router.navigate(['/']),
-      error: () => {
-        this.error.set('Email ou mot de passe incorrect.');
-        this.loading.set(false);
-      },
-    });
+    this.authService
+      .login(email, password)
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe({
+        next: () => this.router.navigate(['/']),
+        error: () => {
+          this.error.set('Email ou mot de passe incorrect.');
+          this.loading.set(false);
+        },
+      });
   }
 }
