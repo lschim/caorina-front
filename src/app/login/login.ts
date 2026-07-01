@@ -36,7 +36,10 @@ export class LoginComponent {
       .login(email, password)
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe({
-        next: () => this.router.navigate(['/']),
+        next: () => {
+          this.loading.set(false);
+          this.router.navigate(['/']);
+        },
         error: () => {
           this.error.set('Email ou mot de passe incorrect.');
           this.loading.set(false);
