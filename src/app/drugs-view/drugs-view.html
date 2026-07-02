@@ -6,12 +6,13 @@
     }
     <span class="spacer"></span>
     <button mat-button (click)="logout()">Se déconnecter</button>
-    <mat-form-field appearance="outline" class="search-field">
-      <mat-label>Rechercher un ingrédient</mat-label>
-      <input matInput (input)="onSearch($event)" />
-      <mat-icon matSuffix>search</mat-icon>
-    </mat-form-field>
   </header>
+
+  <mat-form-field appearance="outline" class="search-field">
+    <mat-label>Rechercher un ingrédient</mat-label>
+    <input matInput (input)="onSearch($event)" />
+    <mat-icon matSuffix>search</mat-icon>
+  </mat-form-field>
 
   <div class="accordion-container">
     @if (searchResults(); as results) {
