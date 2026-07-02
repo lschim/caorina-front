@@ -9,7 +9,7 @@
   },
   "newProjectRoot": "projects",
   "projects": {
-    "tcm-assistant-front": {
+    "caorina-front": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -60,10 +60,10 @@
           "builder": "@angular/build:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "tcm-assistant-front:build:production"
+              "buildTarget": "caorina-front:build:production"
             },
             "development": {
-              "buildTarget": "tcm-assistant-front:build:development"
+              "buildTarget": "caorina-front:build:development"
             }
           },
           "defaultConfiguration": "development"
