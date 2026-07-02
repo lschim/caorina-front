@@ -19,8 +19,11 @@
   flex-shrink: 0;
 }
 
-.search-field {
+.spacer {
   flex: 1;
+}
+
+.search-field {
   max-width: 360px;
 }
 
