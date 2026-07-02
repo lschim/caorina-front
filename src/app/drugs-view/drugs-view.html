@@ -4,6 +4,7 @@
     @if (isAdmin()) {
       <a mat-button routerLink="/admin/users">Gérer les utilisateurs</a>
     }
+    <button mat-button (click)="logout()">Se déconnecter</button>
     <mat-form-field appearance="outline" class="search-field">
       <mat-label>Rechercher un ingrédient</mat-label>
       <input matInput (input)="onSearch($event)" />

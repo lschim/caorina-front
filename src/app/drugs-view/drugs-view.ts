@@ -9,7 +9,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { DrugCategoryService } from '../core/services/drug-category.service';
 import { DrugService } from '../core/services/drug.service';
 import { DrugViewComponent } from '../drug-view/drug-view';
@@ -43,6 +43,7 @@ export class DrugsView implements OnInit {
   private drugApi = inject(DrugCategoryApi);
   private destroyRef = inject(DestroyRef);
   private authService = inject(AuthService);
+  private router = inject(Router);
   drugService = inject(DrugService);
 
   readonly isAdmin = computed(() => this.authService.userRole() === 'ADMIN');
@@ -90,6 +91,11 @@ export class DrugsView implements OnInit {
 
   onOpenCategory(categoryId: number) {
     this.drugService.loadByCategory(categoryId);
+  }
+
+  logout() {
+    this.authService.logout();
+    this.router.navigate(['/login']);
   }
 
   toggleDrug(drugId: number) {
