@@ -4,13 +4,12 @@
   gap: 2px;
 }
 
-.star-rating.readonly {
-  cursor: default;
-}
-
 .star-wrapper {
   position: relative;
   display: inline-flex;
+}
+
+.star-wrapper.editable {
   cursor: pointer;
 }
 
@@ -22,8 +21,12 @@
   z-index: 1;
 }
 
-.left  { left: 0; }
-.right { right: 0; }
+.left {
+  left: 0;
+}
+.right {
+  right: 0;
+}
 
 mat-icon {
   color: #f4b400;

@@ -10,8 +10,8 @@ import { MatIconModule } from '@angular/material/icon';
 })
 export class StarRatingComponent {
   /** Stored value 0–10 (half-star = 1 unit). Display = value / 2. */
-  @Input() value: number = 0;
-  @Input() readonly = false;
+  @Input() value = 0;
+  @Input() readonly = true;
   @Input() iconSize = 28;
   @Output() valueChange = new EventEmitter<number>();
 
@@ -29,10 +29,20 @@ export class StarRatingComponent {
     return 'star_border';
   }
 
-  onHalf(pos: number) { if (!this.readonly) this.hovered = (pos - 1) * 2 + 1; }
-  onFull(pos: number) { if (!this.readonly) this.hovered = pos * 2; }
-  clearHover() { if (!this.readonly) this.hovered = null; }
+  onHalf(pos: number) {
+    if (!this.readonly) this.hovered = (pos - 1) * 2 + 1;
+  }
+  onFull(pos: number) {
+    if (!this.readonly) this.hovered = pos * 2;
+  }
+  clearHover() {
+    if (!this.readonly) this.hovered = null;
+  }
 
-  rateHalf(pos: number) { this.valueChange.emit((pos - 1) * 2 + 1); }
-  rateFull(pos: number) { this.valueChange.emit(pos * 2); }
+  rateHalf(pos: number) {
+    this.valueChange.emit((pos - 1) * 2 + 1);
+  }
+  rateFull(pos: number) {
+    this.valueChange.emit(pos * 2);
+  }
 }

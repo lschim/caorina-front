@@ -1,11 +1,17 @@
 <div class="star-rating" [class.readonly]="readonly" (mouseleave)="clearHover()">
   @for (pos of positions; track pos) {
-    <div class="star-wrapper">
+    <div class="star-wrapper" [class.editable]="!readonly">
       @if (!readonly) {
         <span class="half left" (mouseenter)="onHalf(pos)" (click)="rateHalf(pos)"></span>
         <span class="half right" (mouseenter)="onFull(pos)" (click)="rateFull(pos)"></span>
       }
-      <mat-icon [style.font-size.px]="iconSize" [style.width.px]="iconSize" [style.height.px]="iconSize" [style.line-height.px]="iconSize">{{ iconFor(pos) }}</mat-icon>
+      <mat-icon
+        [style.font-size.px]="iconSize"
+        [style.width.px]="iconSize"
+        [style.height.px]="iconSize"
+        [style.line-height.px]="iconSize"
+        >{{ iconFor(pos) }}</mat-icon
+      >
     </div>
   }
 </div>
