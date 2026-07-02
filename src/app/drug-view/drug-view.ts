@@ -1,4 +1,4 @@
-import { Component, Input, inject } from '@angular/core';
+import { Component, Input, inject, computed } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DrugDetail } from '../core/models/drug.model';
 import { DRUG_FLAVOR_LABELS } from '../core/i18n/drug-flavor.labels';
@@ -14,6 +14,7 @@ import {
 } from '@angular/material/card';
 import { StarRatingComponent } from './star-rating/star-rating';
 import { DrugCategoryApi } from '../core/api/drug.api';
+import { AuthService } from '../core/auth/auth.service';
 
 @Component({
   selector: 'app-drug-view',
@@ -26,6 +27,9 @@ export class DrugViewComponent {
   @Input({ required: true }) drug!: DrugDetail;
 
   private drugApi = inject(DrugCategoryApi);
+  private authService = inject(AuthService);
+
+  readonly isAdmin = computed(() => this.authService.userRole() === 'ADMIN');
 
   updateStars(stars: number) {
     this.drugApi.updateStars(this.drug.id, stars).subscribe({

@@ -24,6 +24,7 @@
       <strong>Étoiles :</strong>
       <app-star-rating
         [value]="drug.numberOfStars ?? 0"
+        [readonly]="!isAdmin()"
         (valueChange)="updateStars($event)"
       ></app-star-rating>
     </div>
