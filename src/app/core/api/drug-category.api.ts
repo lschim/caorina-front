@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
-import { environment } from '../../../environments/environment.dev';
+import { environment } from '../../../environments/environment';
 import { DrugCategory } from '../models/drug-category.model';
 import { Drug } from '../models/drug.model';
 

@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Drug, DrugDetail } from '../models/drug.model';
 import { Injectable, inject } from '@angular/core';
-import { environment } from '../../../environments/environment.dev';
+import { environment } from '../../../environments/environment';
 
 @Injectable({ providedIn: 'root' })
 export class DrugCategoryApi {
