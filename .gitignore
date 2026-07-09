@@ -10,9 +10,6 @@
 # Coverage reports
 /coverage/
 
-# Environment files (optional)
-/src/environments/*.ts
-
 # Angular CLI generated files
 .angular/
 
@@ -59,8 +56,6 @@ Thumbs.db
 .prettierignore
 .prettiercache
 
-# Optional: if you want to ignore package-lock or yarn.lock
-package-lock.json
 yarn.lock
 
 # -------------------------------
