@@ -12,7 +12,8 @@ import {
   MatCardSubtitle,
   MatCardContent,
 } from '@angular/material/card';
-import { MatChip, MatChipSet } from '@angular/material/chips';
+import { MatIcon } from '@angular/material/icon';
+import { MatTooltip } from '@angular/material/tooltip';
 import { StarRatingComponent } from './star-rating/star-rating';
 import { DrugCategoryApi } from '../core/api/drug.api';
 import { AuthService } from '../core/auth/auth.service';
@@ -27,8 +28,8 @@ import { AuthService } from '../core/auth/auth.service';
     MatCardTitle,
     MatCardSubtitle,
     MatCardContent,
-    MatChip,
-    MatChipSet,
+    MatIcon,
+    MatTooltip,
     StarRatingComponent,
   ],
   templateUrl: './drug-view.html',

@@ -1,6 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { provideHttpClient } from '@angular/common/http';
 import { provideHttpClientTesting } from '@angular/common/http/testing';
+import { By } from '@angular/platform-browser';
+import { MatTooltip } from '@angular/material/tooltip';
 
 import { DrugViewComponent } from './drug-view';
 import { DrugDetail } from '../core/models/drug.model';
@@ -25,7 +27,7 @@ describe('DrugView', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should display a Yao yao badge next to effects flagged as such', () => {
+  it('should display a shining star with a "yao yao" tooltip next to effects flagged as such', () => {
     component.drug = {
       id: 1,
       name: 'Shi Gao',
@@ -40,7 +42,10 @@ describe('DrugView', () => {
 
     const text = (fixture.nativeElement as HTMLElement).textContent ?? '';
     expect(text).toContain('Clarifie la Chaleur du Qi');
-    expect(text).toContain('Yao yao');
     expect(text).toContain('Calme la soif');
+
+    const stars = fixture.debugElement.queryAll(By.css('.yao-yao-star'));
+    expect(stars.length).toBe(1);
+    expect(stars[0].injector.get(MatTooltip).message).toBe('yao yao');
   });
 });

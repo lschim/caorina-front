@@ -24,12 +24,12 @@
         <ul class="effects-list">
           @for (effect of drug.effects; track effect.text) {
             <li>
-              {{ effect.text }}
               @if (effect.yaoYao) {
-                <mat-chip-set>
-                  <mat-chip class="yao-yao-chip">Yao yao</mat-chip>
-                </mat-chip-set>
+                <mat-icon class="yao-yao-star" matTooltip="yao yao" aria-label="Yao yao"
+                  >star</mat-icon
+                >
               }
+              {{ effect.text }}
             </li>
           }
         </ul>
@@ -60,12 +60,12 @@
                 <ul class="assoc-effects-list">
                   @for (effect of assoc.effects; track effect.text) {
                     <li>
-                      {{ effect.text }}
                       @if (effect.yaoYao) {
-                        <mat-chip-set>
-                          <mat-chip class="yao-yao-chip">Yao yao</mat-chip>
-                        </mat-chip-set>
+                        <mat-icon class="yao-yao-star" matTooltip="yao yao" aria-label="Yao yao"
+                          >star</mat-icon
+                        >
                       }
+                      {{ effect.text }}
                     </li>
                   }
                 </ul>

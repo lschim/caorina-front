@@ -5,8 +5,23 @@
   margin: 4px 0;
 }
 
-.yao-yao-chip {
-  margin-left: 8px;
-  font-size: 0.75rem;
-  min-height: 20px;
+.yao-yao-star {
+  color: #43a047;
+  font-size: 18px;
+  width: 18px;
+  height: 18px;
+  vertical-align: middle;
+  margin-right: 4px;
+  cursor: default;
+  animation: yao-yao-shine 2s ease-in-out infinite;
+}
+
+@keyframes yao-yao-shine {
+  0%,
+  100% {
+    filter: drop-shadow(0 0 1px #66bb6a);
+  }
+  50% {
+    filter: drop-shadow(0 0 4px #a5d6a7) brightness(1.3);
+  }
 }
