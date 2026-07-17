@@ -4,3 +4,9 @@
   gap: 8px;
   margin: 4px 0;
 }
+
+.yao-yao-chip {
+  margin-left: 8px;
+  font-size: 0.75rem;
+  min-height: 20px;
+}

@@ -12,6 +12,7 @@ import {
   MatCardSubtitle,
   MatCardContent,
 } from '@angular/material/card';
+import { MatChip, MatChipSet } from '@angular/material/chips';
 import { StarRatingComponent } from './star-rating/star-rating';
 import { DrugCategoryApi } from '../core/api/drug.api';
 import { AuthService } from '../core/auth/auth.service';
@@ -19,7 +20,17 @@ import { AuthService } from '../core/auth/auth.service';
 @Component({
   selector: 'app-drug-view',
   standalone: true,
-  imports: [CommonModule, MatCard, MatCardHeader, MatCardTitle, MatCardSubtitle, MatCardContent, StarRatingComponent],
+  imports: [
+    CommonModule,
+    MatCard,
+    MatCardHeader,
+    MatCardTitle,
+    MatCardSubtitle,
+    MatCardContent,
+    MatChip,
+    MatChipSet,
+    StarRatingComponent,
+  ],
   templateUrl: './drug-view.html',
   styleUrls: ['./drug-view.css'],
 })
@@ -33,7 +44,9 @@ export class DrugViewComponent {
 
   updateStars(stars: number) {
     this.drugApi.updateStars(this.drug.id, stars).subscribe({
-      next: () => { this.drug.numberOfStars = stars; },
+      next: () => {
+        this.drug.numberOfStars = stars;
+      },
       error: (err) => console.error(err),
     });
   }
@@ -45,14 +58,14 @@ export class DrugViewComponent {
   }
 
   get flavorsLabel(): string {
-    return this.drug.flavors?.map(f => DRUG_FLAVOR_LABELS[f]).join(', ') || '—';
+    return this.drug.flavors?.map((f) => DRUG_FLAVOR_LABELS[f]).join(', ') || '—';
   }
 
   get movementsLabel(): string {
-    return this.drug.movements?.map(m => DRUG_MOVEMENT_LABELS[m]).join(', ') || '—';
+    return this.drug.movements?.map((m) => DRUG_MOVEMENT_LABELS[m]).join(', ') || '—';
   }
 
   get tropismLabel(): string {
-    return this.drug.tropism?.map(o => ORGAN_LABELS[o]).join(', ') || '—';
+    return this.drug.tropism?.map((o) => ORGAN_LABELS[o]).join(', ') || '—';
   }
 }
