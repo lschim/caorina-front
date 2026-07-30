@@ -11,5 +11,5 @@ export const authGuard: CanActivateFn = () => {
 export const adminGuard: CanActivateFn = () => {
   const auth = inject(AuthService);
   if (auth.isLoggedIn() && auth.userRole() === 'ADMIN') return true;
-  return inject(Router).createUrlTree(['/']);
+  return inject(Router).createUrlTree(['/drugs']);
 };

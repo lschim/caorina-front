@@ -38,7 +38,7 @@ export class LoginComponent {
       .subscribe({
         next: () => {
           this.loading.set(false);
-          this.router.navigate(['/']);
+          this.router.navigate(['/drugs']);
         },
         error: () => {
           this.error.set('Email ou mot de passe incorrect.');
