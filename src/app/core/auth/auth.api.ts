@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from '../../../environments/environment';
-import { LoginResponse } from './auth.model';
+import { AccountInfo, LoginResponse } from './auth.model';
 
 @Injectable({ providedIn: 'root' })
 export class AuthApi {
@@ -12,6 +12,17 @@ export class AuthApi {
     return this.http.post<LoginResponse>(`${environment.apiBaseUrl}/auth/login`, {
       email,
       password,
+    });
+  }
+
+  me(): Observable<AccountInfo> {
+    return this.http.get<AccountInfo>(`${environment.apiBaseUrl}/auth/me`);
+  }
+
+  changePassword(currentPassword: string, newPassword: string): Observable<void> {
+    return this.http.patch<void>(`${environment.apiBaseUrl}/auth/password`, {
+      currentPassword,
+      newPassword,
     });
   }
 }

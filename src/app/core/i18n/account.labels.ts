@@ -1,0 +1,16 @@
+export const ACCOUNT_LABELS = {
+  title: 'Mon compte',
+  email: 'Email',
+  memberSince: 'Membre depuis le',
+  changePasswordTitle: 'Changer le mot de passe',
+  currentPassword: 'Mot de passe actuel',
+  newPassword: 'Nouveau mot de passe',
+  confirmPassword: 'Confirmer le nouveau mot de passe',
+  submit: 'Changer le mot de passe',
+  submitting: 'Changement en cours...',
+  successMessage: 'Mot de passe changé avec succès.',
+  wrongCurrentPasswordError: 'Mot de passe actuel incorrect.',
+  genericError: 'Une erreur est survenue. Réessayez.',
+  passwordsMismatchError: 'Les mots de passe ne correspondent pas.',
+  passwordTooShortError: 'Le mot de passe doit contenir au moins 8 caractères.',
+};

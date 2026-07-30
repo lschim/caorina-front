@@ -1,0 +1,24 @@
+.page {
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 32px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.password-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.form-error {
+  color: red;
+  margin: 0;
+}
+
+.form-success {
+  color: green;
+  margin: 0;
+}

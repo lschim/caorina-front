@@ -24,6 +24,11 @@ export const routes: Routes = [
       import('./formulas-view/formulas-view').then((m) => m.FormulasView),
     canActivate: [authGuard],
   },
+  {
+    path: 'account',
+    loadComponent: () => import('./account/account').then((m) => m.Account),
+    canActivate: [authGuard],
+  },
   { path: '', redirectTo: 'drugs', pathMatch: 'full' },
   { path: '**', redirectTo: 'drugs' },
 ];
