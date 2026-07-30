@@ -18,6 +18,12 @@ export const routes: Routes = [
       import('./admin/create-user/create-user').then((m) => m.CreateUserComponent),
     canActivate: [adminGuard],
   },
+  {
+    path: 'formulas',
+    loadComponent: () =>
+      import('./formulas-view/formulas-view').then((m) => m.FormulasView),
+    canActivate: [authGuard],
+  },
   { path: '', redirectTo: 'drugs', pathMatch: 'full' },
   { path: '**', redirectTo: 'drugs' },
 ];
