@@ -1,13 +1,4 @@
 <div class="page">
-  <header class="page-header">
-    <h1>Caorina</h1>
-    @if (isAdmin()) {
-      <a mat-button routerLink="/admin/users">Gérer les utilisateurs</a>
-    }
-    <span class="spacer"></span>
-    <button mat-button (click)="logout()">Se déconnecter</button>
-  </header>
-
   <mat-form-field appearance="outline" class="search-field">
     <mat-label>Rechercher un ingrédient</mat-label>
     <input matInput (input)="onSearch($event)" />

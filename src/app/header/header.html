@@ -1,0 +1,19 @@
+<mat-toolbar color="primary">
+  <a mat-button routerLink="/drugs" routerLinkActive="active-link">{{ labels.ingredients }}</a>
+  <a mat-button routerLink="/formulas" routerLinkActive="active-link">{{ labels.formulas }}</a>
+
+  <span class="spacer"></span>
+
+  <button mat-icon-button [matMenuTriggerFor]="profileMenu" aria-label="Menu du compte">
+    <mat-icon>account_circle</mat-icon>
+  </button>
+
+  <mat-menu #profileMenu="matMenu">
+    @if (isAdmin()) {
+      <a mat-menu-item routerLink="/admin/users">{{ labels.manageUsers }}</a>
+    }
+    <a mat-menu-item routerLink="/account">{{ labels.myAccount }}</a>
+    <mat-divider></mat-divider>
+    <button mat-menu-item (click)="logout()">{{ labels.logout }}</button>
+  </mat-menu>
+</mat-toolbar>
