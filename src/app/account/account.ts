@@ -32,6 +32,7 @@ export class Account implements OnInit {
   readonly labels = ACCOUNT_LABELS;
 
   accountInfo = signal<AccountInfo | null>(null);
+  accountInfoError = signal<string | null>(null);
 
   form = this.fb.nonNullable.group(
     {
@@ -52,7 +53,10 @@ export class Account implements OnInit {
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe({
         next: (info) => this.accountInfo.set(info),
-        error: (err) => console.error(err),
+        error: (err) => {
+          console.error(err);
+          this.accountInfoError.set(this.labels.genericError);
+        },
       });
   }
 

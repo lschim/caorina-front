@@ -41,7 +41,9 @@ describe('Account', () => {
       confirmPassword: 'short',
     });
     fixture.detectChanges();
-    const button = fixture.nativeElement.querySelector('button[type="submit"]') as HTMLButtonElement;
+    const button = fixture.nativeElement.querySelector(
+      'button[type="submit"]',
+    ) as HTMLButtonElement;
     expect(button.disabled).toBe(true);
   });
 
@@ -52,7 +54,9 @@ describe('Account', () => {
       confirmPassword: 'different1',
     });
     fixture.detectChanges();
-    const button = fixture.nativeElement.querySelector('button[type="submit"]') as HTMLButtonElement;
+    const button = fixture.nativeElement.querySelector(
+      'button[type="submit"]',
+    ) as HTMLButtonElement;
     expect(button.disabled).toBe(true);
   });
 
@@ -64,7 +68,9 @@ describe('Account', () => {
     });
     fixture.detectChanges();
 
-    const button = fixture.nativeElement.querySelector('button[type="submit"]') as HTMLButtonElement;
+    const button = fixture.nativeElement.querySelector(
+      'button[type="submit"]',
+    ) as HTMLButtonElement;
     button.click();
 
     const req = httpMock.expectOne(`${environment.apiBaseUrl}/auth/password`);
@@ -85,14 +91,41 @@ describe('Account', () => {
     });
     fixture.detectChanges();
 
-    const button = fixture.nativeElement.querySelector('button[type="submit"]') as HTMLButtonElement;
+    const button = fixture.nativeElement.querySelector(
+      'button[type="submit"]',
+    ) as HTMLButtonElement;
     button.click();
 
     const req = httpMock.expectOne(`${environment.apiBaseUrl}/auth/password`);
-    req.flush({ message: 'mot de passe actuel incorrect' }, { status: 400, statusText: 'Bad Request' });
+    req.flush(
+      { message: 'mot de passe actuel incorrect' },
+      { status: 400, statusText: 'Bad Request' },
+    );
     fixture.detectChanges();
 
     const text = (fixture.nativeElement as HTMLElement).textContent ?? '';
     expect(text).toContain('Mot de passe actuel incorrect.');
+  });
+});
+
+describe('Account - account info load failure', () => {
+  it('shows a generic error message when GET /auth/me fails', () => {
+    TestBed.configureTestingModule({
+      imports: [Account],
+      providers: [provideHttpClient(), provideHttpClientTesting()],
+    });
+
+    const fixture = TestBed.createComponent(Account);
+    const httpMock = TestBed.inject(HttpTestingController);
+    fixture.detectChanges();
+
+    const req = httpMock.expectOne(`${environment.apiBaseUrl}/auth/me`);
+    req.flush({ message: 'boom' }, { status: 500, statusText: 'Internal Server Error' });
+    fixture.detectChanges();
+
+    const text = (fixture.nativeElement as HTMLElement).textContent ?? '';
+    expect(text).toContain('Une erreur est survenue. Réessayez.');
+
+    httpMock.verify();
   });
 });
