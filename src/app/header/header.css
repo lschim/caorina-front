@@ -1,3 +1,9 @@
+.title {
+  font-size: 20px;
+  font-weight: 500;
+  margin-right: 16px;
+}
+
 .spacer {
   flex: 1;
 }
