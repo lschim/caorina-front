@@ -8,7 +8,7 @@ describe('HeaderComponent', () => {
   let authServiceStub: { userRole: () => 'ADMIN' | 'USER' | null; logout: () => void };
 
   function setup(role: 'ADMIN' | 'USER' | null) {
-    authServiceStub = { userRole: () => role, logout: () => {} };
+    authServiceStub = { userRole: () => role, logout: () => undefined };
     TestBed.configureTestingModule({
       imports: [HeaderComponent],
       providers: [

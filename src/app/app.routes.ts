@@ -4,8 +4,7 @@ import { authGuard, adminGuard } from './core/auth/auth.guard';
 export const routes: Routes = [
   {
     path: 'drugs',
-    loadComponent: () =>
-      import('./drugs-view/drugs-view').then((m) => m.DrugsView),
+    loadComponent: () => import('./drugs-view/drugs-view').then((m) => m.DrugsView),
     canActivate: [authGuard],
   },
   {
@@ -20,8 +19,7 @@ export const routes: Routes = [
   },
   {
     path: 'formulas',
-    loadComponent: () =>
-      import('./formulas-view/formulas-view').then((m) => m.FormulasView),
+    loadComponent: () => import('./formulas-view/formulas-view').then((m) => m.FormulasView),
     canActivate: [authGuard],
   },
   {

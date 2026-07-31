@@ -8,7 +8,7 @@ describe('App', () => {
     const authServiceStub = {
       isLoggedIn: () => isLoggedIn,
       userRole: () => null,
-      logout: () => {},
+      logout: () => undefined,
     };
     TestBed.configureTestingModule({
       imports: [App],
