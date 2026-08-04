@@ -25,4 +25,17 @@ export class AuthApi {
       newPassword,
     });
   }
+
+  register(email: string, password: string): Observable<void> {
+    return this.http.post<void>(`${environment.apiBaseUrl}/auth/register`, {
+      email,
+      password,
+    });
+  }
+
+  resendVerification(email: string): Observable<void> {
+    return this.http.post<void>(`${environment.apiBaseUrl}/auth/resend-verification`, {
+      email,
+    });
+  }
 }
