@@ -19,17 +19,17 @@ export class AuthApi {
     return this.http.get<AccountInfo>(`${environment.apiBaseUrl}/auth/me`);
   }
 
-  changePassword(currentPassword: string, newPassword: string): Observable<void> {
-    return this.http.patch<void>(`${environment.apiBaseUrl}/auth/password`, {
-      currentPassword,
-      newPassword,
-    });
-  }
-
   register(email: string, password: string): Observable<void> {
     return this.http.post<void>(`${environment.apiBaseUrl}/auth/register`, {
       email,
       password,
+    });
+  }
+
+  changePassword(currentPassword: string, newPassword: string): Observable<void> {
+    return this.http.patch<void>(`${environment.apiBaseUrl}/auth/password`, {
+      currentPassword,
+      newPassword,
     });
   }
 
