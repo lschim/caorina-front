@@ -46,6 +46,7 @@ export class RegisterComponent {
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe({
         next: () => {
+          this.loading.set(false);
           this.router.navigate(['/login'], { queryParams: { registered: 1, email } });
         },
         error: (err: { status: number }) => {

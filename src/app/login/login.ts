@@ -55,6 +55,8 @@ export class LoginComponent implements OnInit {
     if (this.form.invalid) return;
     this.loading.set(true);
     this.error.set(null);
+    this.resendMessage.set(null);
+    this.resendError.set(null);
     const { email, password } = this.form.getRawValue();
     this.authService
       .login(email, password)
@@ -69,6 +71,7 @@ export class LoginComponent implements OnInit {
           if (err.status === 403) {
             this.resendContext.set({ email, reason: 'unverified' });
           } else {
+            this.resendContext.set(null);
             this.error.set(this.labels.invalidCredentialsError);
           }
         },

@@ -32,12 +32,7 @@
       <p class="form-error">{{ error() }}</p>
     }
 
-    <button
-      mat-raised-button
-      color="primary"
-      type="submit"
-      [disabled]="form.invalid || loading()"
-    >
+    <button mat-raised-button color="primary" type="submit" [disabled]="form.invalid || loading()">
       {{ loading() ? labels.submitting : labels.submit }}
     </button>
 

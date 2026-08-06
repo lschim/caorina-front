@@ -10,7 +10,12 @@
             : labels.emailNotVerifiedError
         }}
       </p>
-      <button type="button" mat-stroked-button (click)="resendVerification()" [disabled]="resendLoading()">
+      <button
+        type="button"
+        mat-stroked-button
+        (click)="resendVerification()"
+        [disabled]="resendLoading()"
+      >
         {{ resendLoading() ? labels.resendSending : labels.resendButton }}
       </button>
       @if (resendMessage()) {
@@ -28,12 +33,7 @@
 
     <mat-form-field>
       <mat-label>{{ labels.password }}</mat-label>
-      <input
-        matInput
-        type="password"
-        formControlName="password"
-        autocomplete="current-password"
-      />
+      <input matInput type="password" formControlName="password" autocomplete="current-password" />
     </mat-form-field>
 
     @if (error()) {
