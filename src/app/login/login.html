@@ -2,6 +2,25 @@
   <form [formGroup]="form" (ngSubmit)="onSubmit()" class="auth-form">
     <h2 class="auth-title">{{ labels.title }}</h2>
 
+    @if (resendContext(); as context) {
+      <p class="form-info">
+        {{
+          context.reason === 'registered'
+            ? labels.registeredBanner(context.email)
+            : labels.emailNotVerifiedError
+        }}
+      </p>
+      <button type="button" mat-stroked-button (click)="resendVerification()" [disabled]="resendLoading()">
+        {{ resendLoading() ? labels.resendSending : labels.resendButton }}
+      </button>
+      @if (resendMessage()) {
+        <p class="form-success">{{ resendMessage() }}</p>
+      }
+      @if (resendError()) {
+        <p class="form-error">{{ resendError() }}</p>
+      }
+    }
+
     <mat-form-field>
       <mat-label>{{ labels.email }}</mat-label>
       <input matInput type="email" formControlName="email" autocomplete="email" />
