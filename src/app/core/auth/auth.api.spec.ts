@@ -37,4 +37,12 @@ describe('AuthApi', () => {
     expect(req.request.body).toEqual({ email: 'new@tcm.fr' });
     req.flush(null);
   });
+
+  it('gets /auth/verify-email with the token as a query param', () => {
+    api.verifyEmail('abc123').subscribe();
+
+    const req = httpMock.expectOne(`${environment.apiBaseUrl}/auth/verify-email?token=abc123`);
+    expect(req.request.method).toBe('GET');
+    req.flush(null);
+  });
 });

@@ -1,0 +1,17 @@
+<div class="auth-page">
+  <div class="auth-form">
+    <h2 class="auth-title">{{ labels.title }}</h2>
+
+    @if (state() === 'loading') {
+      <p>{{ labels.loading }}</p>
+    }
+    @if (state() === 'success') {
+      <p class="form-success">{{ labels.successMessage }}</p>
+      <a routerLink="/login" class="auth-link">{{ labels.loginLink }}</a>
+    }
+    @if (state() === 'error') {
+      <p class="form-error">{{ labels.errorMessage }}</p>
+      <a routerLink="/login" class="auth-link">{{ labels.loginLink }}</a>
+    }
+  </div>
+</div>

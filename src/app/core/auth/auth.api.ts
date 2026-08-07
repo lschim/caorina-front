@@ -38,4 +38,10 @@ export class AuthApi {
       email,
     });
   }
+
+  verifyEmail(token: string): Observable<void> {
+    return this.http.get<void>(
+      `${environment.apiBaseUrl}/auth/verify-email?token=${encodeURIComponent(token)}`,
+    );
+  }
 }
