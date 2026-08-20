@@ -39,6 +39,19 @@ export class AuthApi {
     });
   }
 
+  forgotPassword(email: string): Observable<void> {
+    return this.http.post<void>(`${environment.apiBaseUrl}/auth/forgot-password`, {
+      email,
+    });
+  }
+
+  resetPassword(token: string, newPassword: string): Observable<void> {
+    return this.http.post<void>(`${environment.apiBaseUrl}/auth/reset-password`, {
+      token,
+      newPassword,
+    });
+  }
+
   verifyEmail(token: string): Observable<void> {
     return this.http.get<void>(
       `${environment.apiBaseUrl}/auth/verify-email?token=${encodeURIComponent(token)}`,

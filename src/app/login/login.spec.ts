@@ -45,6 +45,15 @@ describe('LoginComponent', () => {
     expect(link.textContent).toContain('Créer un compte');
   });
 
+  it('shows a link to the forgot-password screen', () => {
+    setup();
+    const link = fixture.nativeElement.querySelector(
+      'a[routerLink="/forgot-password"]',
+    ) as HTMLAnchorElement;
+    expect(link).toBeTruthy();
+    expect(link.textContent).toContain('Mot de passe oublié ?');
+  });
+
   it('shows an error message on invalid credentials', () => {
     setup();
     component.form.setValue({ email: 'test@tcm.fr', password: 'wrong' });

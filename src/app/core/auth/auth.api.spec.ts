@@ -38,6 +38,24 @@ describe('AuthApi', () => {
     req.flush(null);
   });
 
+  it('posts to /auth/forgot-password with the email', () => {
+    api.forgotPassword('new@tcm.fr').subscribe();
+
+    const req = httpMock.expectOne(`${environment.apiBaseUrl}/auth/forgot-password`);
+    expect(req.request.method).toBe('POST');
+    expect(req.request.body).toEqual({ email: 'new@tcm.fr' });
+    req.flush(null);
+  });
+
+  it('posts to /auth/reset-password with the token and the new password', () => {
+    api.resetPassword('abc123', 'brandnew1').subscribe();
+
+    const req = httpMock.expectOne(`${environment.apiBaseUrl}/auth/reset-password`);
+    expect(req.request.method).toBe('POST');
+    expect(req.request.body).toEqual({ token: 'abc123', newPassword: 'brandnew1' });
+    req.flush(null);
+  });
+
   it('gets /auth/verify-email with the token as a query param', () => {
     api.verifyEmail('abc123').subscribe();
 

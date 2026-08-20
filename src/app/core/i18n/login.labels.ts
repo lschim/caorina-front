@@ -13,4 +13,5 @@ export const LOGIN_LABELS = {
   resendSuccess: 'Email de vérification renvoyé.',
   resendError: "Impossible de renvoyer l'email pour le moment. Réessayez plus tard.",
   registerLink: 'Créer un compte',
+  forgotPasswordLink: 'Mot de passe oublié ?',
 };
