@@ -9,7 +9,10 @@ export class DrugCategoryService {
   private categories = signal<DrugCategory[]>([]);
 
   load() {
-    this.drugCategoryApi.getAll().subscribe((data) => this.categories.set(data));
+    this.drugCategoryApi.getAll().subscribe({
+      next: (data) => this.categories.set(data),
+      error: (err) => console.error(err),
+    });
   }
 
   get categoriesSignal() {
