@@ -13,7 +13,11 @@
       {{ drug.name }}
     </div>
     @if (drug.numberOfStars) {
-      <app-star-rating [value]="drug.numberOfStars" [readonly]="true" [iconSize]="16"></app-star-rating>
+      <app-star-rating
+        [value]="drug.numberOfStars"
+        [readonly]="true"
+        [iconSize]="16"
+      ></app-star-rating>
     }
   </div>
 
@@ -36,7 +40,9 @@
 
     <div class="prop-group prop-tropism">
       @for (t of drug.tropism; track t) {
-        <span class="badge" [ngClass]="'tropism-' + t" [title]="organLabels[t]">{{ organShortLabels[t] }}</span>
+        <span class="badge" [ngClass]="'tropism-' + t" [title]="organLabels[t]">{{
+          organShortLabels[t]
+        }}</span>
       }
     </div>
   </div>
